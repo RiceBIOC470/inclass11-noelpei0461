@@ -6,6 +6,33 @@
 % 1. Find out (without reading  the entire file) -  (a) the size of the image in
 % x and y, (b) the number of z-slices, (c) the number of time points, and (d) the number of
 % channels.
+%a)
+file='011917-wntDose-esi017-RI_f0016.tif';
+reader=bfGetReader(file);
+[reader.getSizeX,reader.getSizeY]
+
+ans =
+
+        1024        1024
+%b)
+reader.getSizeZ
+ans =
+
+     1
+%c)
+reader.getSizeT
+
+ans =
+
+    68
+%d)
+
+reader.getSizeC
+
+ans =
+
+     2
+
 
 % 2. Write code which reads in all the channels from the 30th time point
 % and displays them as a multicolor image.
