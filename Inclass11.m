@@ -54,7 +54,21 @@ imshow(im2show)
 % 3. Use the images from part (2). In one of the channels, the membrane is
 % prominently marked. Determine the best threshold and make a binary
 % mask which marks the membranes and displays this mask. 
+img_m=img1 > 800;
+img_m=img1 > 900;
+img_m=img1 > 1000;
+img0=uint16(img_m)*1000;
+img2showm=cat(3, imadjust(img0), imadjust(img2), zeros(size(img1)));
+imshow(img2showm);
+imshow(imadjust(img0));
 
+% The best threshold is around 900.
 % 4. Run and display both an erosion and a dilation on your mask from part
 % (3) with a structuring element which is a disk of radius 3. Explain the
 % results.
+
+imge=imerode(img_m, strel('disk',3));
+imgd=imdilate(img_m, strel('disk',3));
+% In erode function, every pixel within the 3 pixels range of a black pixel will be converted into a black pixel. 
+% In dilate function, every pixel within the 3 pixels range of a white pixel will be converted into a white pixel. 
+
